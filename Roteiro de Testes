@@ -1,0 +1,108 @@
+Teste 1: Adição (ADD) com Overflow
+
+Neste teste foi realizada uma soma em complemento de 2 utilizando números de 4 bits. Como esse sistema representa valores entre -8 e +7, ao somar 4 + 4 ocorre um estouro de capacidade (overflow). A ULA identifica que dois números positivos geraram um resultado inválido para a faixa representável e ativa a flag de overflow.
+
+Estado 1 (LD0): chaves em 000 (ADD) e acionamento do botão SUL.
+Estado 2 (LD2): chaves em 0100 (valor 4) e acionamento do botão SUL.
+Estado 3 (LD5): chaves em 0100 (valor 4) e acionamento do botão SUL.
+
+Resultado observado:
+
+LEDs da direita: 1000
+LEDs da esquerda: LD4 (Overflow) aceso e LD6 (Negativo) aceso.
+
+Teste 2: Subtração (SUB) ativando a Flag Zero
+
+O objetivo deste teste foi verificar o funcionamento da flag Zero. Foi realizada a operação 7 - 7, resultando em zero. A ULA detectou que todos os bits da saída ficaram em nível baixo e ativou a flag Z.
+
+Estado 1 (LD0): chaves em 001 (SUB) e acionamento do botão SUL.
+Estado 2 (LD2): chaves em 0111 (valor 7) e acionamento do botão SUL.
+Estado 3 (LD5): chaves em 0111 (valor 7) e acionamento do botão SUL.
+
+Resultado observado:
+
+LEDs da direita: 0000
+LEDs da esquerda: apenas LD7 (Zero) aceso.
+
+Teste 3: Incremento (INC)
+
+Neste teste foi utilizada a operação de incremento, responsável por somar 1 ao operando A. Como essa operação utiliza apenas um operando, a máquina de estados não solicita o operando B e vai diretamente para o resultado.
+
+Estado 1 (LD0): chaves em 010 (INC) e acionamento do botão SUL.
+Estado 2 (LD2): chaves em 0101 (valor 5) e acionamento do botão SUL.
+
+Resultado observado:
+
+LEDs da direita: 0110
+LEDs da esquerda: todas as flags apagadas.
+
+Teste 4: Porta Lógica OR
+
+O teste da operação OR teve como objetivo verificar o comportamento lógico bit a bit da ULA. A saída assume valor 1 sempre que pelo menos um dos bits comparados estiver em nível alto.
+
+Estado 1 (LD0): chaves em 011 (OR) e acionamento do botão SUL.
+Estado 2 (LD2): chaves em 1010 e acionamento do botão SUL.
+Estado 3 (LD5): chaves em 0101 e acionamento do botão SUL.
+
+Resultado observado:
+
+LEDs da direita: 1111
+LEDs da esquerda: apenas LD6 (Negativo) aceso.
+
+Teste 5: Porta Lógica AND
+
+Neste teste foi verificada a operação lógica AND, em que a saída só apresenta nível lógico 1 quando ambos os bits comparados também forem 1.
+
+Estado 1 (LD0): chaves em 100 (AND) e acionamento do botão SUL.
+Estado 2 (LD2): chaves em 1100 e acionamento do botão SUL.
+Estado 3 (LD5): chaves em 1010 e acionamento do botão SUL.
+
+Resultado observado:
+
+LEDs da direita: 1000
+LEDs da esquerda: apenas LD6 (Negativo) aceso.
+
+Teste 6: Porta Lógica XOR
+
+A operação XOR foi utilizada para comparar diferenças entre os bits dos operandos. A saída assume valor 1 somente quando os bits comparados forem diferentes.
+
+Estado 1 (LD0): chaves em 101 (XOR) e acionamento do botão SUL.
+Estado 2 (LD2): chaves em 1100 e acionamento do botão SUL.
+Estado 3 (LD5): chaves em 1010 e acionamento do botão SUL.
+
+Resultado observado:
+
+LEDs da direita: 0110
+LEDs da esquerda: todas as flags apagadas.
+
+Teste 7: Negação (NEG) com Overflow
+
+Neste teste foi realizada a negação do número -8. Como não existe representação para +8 em 4 bits com complemento de 2, ocorreu overflow. Assim como no INC, a FSM não solicita o segundo operando.
+
+Estado 1 (LD0): chaves em 110 (NEG) e acionamento do botão SUL.
+Estado 2 (LD2): chaves em 1000 (valor -8) e acionamento do botão SUL.
+
+Resultado observado:
+
+LEDs da direita: 1000
+LEDs da esquerda: LD4 (Overflow) aceso e LD6 (Negativo) aceso.
+
+Teste 8: Shift Left (SHL) verificando a Flag Carry
+
+O objetivo deste teste foi verificar o deslocamento lógico à esquerda e o funcionamento da flag Carry. Durante o deslocamento, o bit mais significativo que sai da operação é armazenado na flag C.
+
+Estado 1 (LD0): chaves em 111 (SHL) e acionamento do botão SUL.
+Estado 2 (LD2): chaves em 1011 e acionamento do botão SUL.
+Estado 3 (LD5): chaves em 0000 e acionamento do botão SUL.
+
+Resultado observado:
+
+LEDs da direita: 0110
+LEDs da esquerda: LD5 (Carry) aceso.
+
+Flags utilizadas:
+
+LD7: Flag Z (Zero)
+LD6: Flag N (Negativo)
+LD5: Flag C (Carry)
+LD4: Flag V (Overflow)
