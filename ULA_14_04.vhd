@@ -293,7 +293,7 @@ begin
         sum(3) := add_in_A(3) xor add_in_B(3) xor c(2);
         c(3)   := (add_in_A(3) and add_in_B(3)) or (c(2) and (add_in_A(3) xor add_in_B(3)));
 
-        -- 3. MULTIPLEXADOR DE SAÍDA E CÁLCULO DAS FLAGS V E C
+        --flags overflow and carry
         v_flag_v := '0';
         out_c    := '0';
 
