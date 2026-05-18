@@ -1,0 +1,41 @@
+# CLOCK DA PLACA
+NET "clk" LOC = "E12" | IOSTANDARD = LVCMOS33;
+
+# IOSTANDARD = LVCMOS33 -> 0 volts = 0 logico e 3.3 volts = 1 logico
+# PULLDOWN -> resistor de pulldown reduz ruidos do botao
+# SLEW -> velocidade de transicao de sinal, slow evita ruidos
+# DRIVE -> corrente das portas logicas
+
+# BOTÃO DE CONFIRMAÇÃO (Button South)
+# Requer PULLDOWN interno ativado
+
+NET "btn_confirm" LOC = "T15" | IOSTANDARD = LVCMOS33 | PULLDOWN;
+
+
+
+# CHAVES DESLIZANTES (Operações e Operandos)
+
+NET "SW<3>" LOC = "T9"  | IOSTANDARD = LVCMOS33; # SW3
+NET "SW<2>" LOC = "U8"  | IOSTANDARD = LVCMOS33; # SW2
+NET "SW<1>" LOC = "U10" | IOSTANDARD = LVCMOS33; # SW1
+NET "SW<0>" LOC = "V8"  | IOSTANDARD = LVCMOS33; # SW0
+
+
+
+# LEDs PARA AS FLAGS (Zero, Negativo, Carry, Overflow)
+# Mapeados para os 4 LEDs da esquerda (LD7 a LD4)
+
+NET "led_flags<3>" LOC = "W21" | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 8; # LD7
+NET "led_flags<2>" LOC = "Y22" | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 8; # LD6
+NET "led_flags<1>" LOC = "V20" | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 8; # LD5
+NET "led_flags<0>" LOC = "V19" | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 8; # LD4
+
+
+
+# LEDs PARA O RESULTADO DA ULA
+# Mapeados para os 4 LEDs da direita (LD3 a LD0)
+
+NET "led_result<3>" LOC = "U19" | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 8; # LD3
+NET "led_result<2>" LOC = "U20" | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 8; # LD2
+NET "led_result<1>" LOC = "T19" | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 8; # LD1
+NET "led_result<0>" LOC = "R20" | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 8; # LD0
