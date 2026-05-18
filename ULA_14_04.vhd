@@ -123,7 +123,7 @@ begin
 
     -- Combinational Finite State Machine Logic: Next State & Enables 
    
-    fsm_comb_logic_proc: process(current_state, btn_pressed_edge,  sreg_opcode)
+    fsm_comb_logic_proc: process(current_state, btn_pressed_edge,  reg_opcode)
     begin
         -- The FSM function will detect any changes to the variables listed between parentheses
         -- Default assignments to prevent inferred latches
